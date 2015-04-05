@@ -1,0 +1,55 @@
+$def with (posts, today)
+
+<div class="page-header">
+  <h2>Fota & Security & Knox TG 周报系统  <small>  $today  </small><a class="btn btn-success btn-sm" role="button" href="/download">Download</a></h2>
+</div>
+
+<div class="alert alert-warning" role="alert">
+<strong>Tip1:</strong> 大家在跟我借样机之前可以先点一下 <a href="http://109.131.12.94/sample_mgt"><strong>样机记录</strong></a> 看看机器被谁借了:)
+<br>
+<strong>Tip2:</strong> 改变了策略: 按照最近的Post来生成Excel文档, 再也不需要<strong>Last Post Date</strong>为绿色了
+</div>
+
+
+<div>
+  <table class="table table-striped table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Member</th>
+        <th>Action</th>
+        <th>Last Post Date</th>
+      </tr>
+    </thead>
+    
+    
+    <tbody>
+        $for post in posts:
+          <tr>
+            <td>$post.userid</td>
+            <td>
+            $post.username
+            </td>
+           
+            <td>
+            <a class="btn btn-success btn-mini" role="button" href="/new/$post.userid">New</a>
+            $if post.reportid:
+                <a class="btn btn-success btn-mini" role="button" href="/view/$post.reportid">View</a>
+            $else:
+                <a class="btn btn-success btn-mini" role="button" disabled="disabled" href="/view/$post.reportid">View</a>
+            </td>
+            <td>
+            $if post.postdate == None:
+                <span class="label label-danger">No any posts yet</span>
+            $elif post.postdate == today:
+                <span class="label label-success">$post.postdate</span>
+            $elif post.postdate != today:
+                <span class="label label-warning">$post.postdate</span>
+            
+            </td>
+
+          </tr>
+
+    </tbody>
+  </table>
+</div>

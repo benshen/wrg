@@ -1,0 +1,57 @@
+$def with (report)
+
+<div class="page-header">
+  <h1>Weekly Report   <small>$report.who - $report.postdate</small></h1>
+</div>
+
+<div>    
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">JOB</h3>
+        </div>
+        <div class="panel-body">
+          <pre>$report.job</pre>
+        </div>
+    </div>
+      
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">RISK</h3>
+        </div>
+        <div class="panel-body">
+          <pre>$report.risk</pre>
+        </div>
+    </div>
+      
+      
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">PLAN</h3>
+        </div>
+        <div class="panel-body">
+          <pre>$report.plan</pre>
+        </div>
+    </div>
+      
+
+    <table>
+        <tr>
+            <td>
+                <form action="/edit/$report.id" method="get">
+                    <input class="btn btn-success" type="submit" value="Edit Report"/>
+                </form>
+            </td>
+            
+            <td>
+                <form action="/del/$report.id" method="post">
+                    <input class="btn btn-danger" type="submit" value="Delete Report"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    
+    <br>
+
+    
+</div>
